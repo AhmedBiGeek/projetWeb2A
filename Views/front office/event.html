@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UrbanEstate - Événements</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
+    header { background: #222; color: white; padding: 20px; text-align: center; }
+    .container { padding: 20px; max-width: 1000px; margin: auto; }
+    .event { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; cursor: pointer; }
+    .event:hover { background: #ececec; }
+    .event h3 { margin: 0; }
+    .popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+    .popup-content { background: white; padding: 20px; border-radius: 8px; max-width: 400px; text-align: center; }
+    .close { float: right; cursor: pointer; color: red; }
+    form input, form button { width: 100%; padding: 10px; margin: 5px 0; }
+    @media (max-width: 600px) { .container { padding: 10px; } }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>UrbanEstate - Nos Événements</h1>
+</header>
+
+<div class="container">
+  <div class="event" onclick="openPopup('Gala Immobilier', 'Le 25 Juin 2025 à Tunis')">
+    <h3>Gala Immobilier</h3>
+    <p>Le 25 Juin 2025 à Tunis</p>
+  </div>
+
+  <div class="event" onclick="openPopup('Salon Investissement', 'Le 10 Juillet 2025 à Souse')">
+    <h3>Salon Investissement</h3>
+    <p>Le 10 Juillet 2025 à Souse</p>
+  </div>
+
+  <div class="event" onclick="openPopup('Conférence Smart City', 'Le 5 Septembre 2025 à Sfax')">
+    <h3>Conférence Smart City</h3>
+    <p>Le 5 Septembre 2025 à Sfax</p>
+  </div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h2 id="eventTitle"></h2>
+    <p id="eventDate"></p>
+
+    <h3>Inscription</h3>
+    <form>
+      <input type="text" placeholder="Votre nom" required>
+      <input type="email" placeholder="Votre email" required>
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openPopup(title, date) {
+    document.getElementById('popup').style.display = 'flex';
+    document.getElementById('eventTitle').innerText = title;
+    document.getElementById('eventDate').innerText = date;
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
