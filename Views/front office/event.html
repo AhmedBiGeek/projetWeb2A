@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UrbanEstate - Événements</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
-    header { background: #222; color: white; padding: 20px; text-align: center; }
-    .container { padding: 20px; max-width: 1000px; margin: auto; }
-    .event { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; cursor: pointer; }
-    .event:hover { background: #ececec; }
-    .event h3 { margin: 0; }
-    .popup { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
-    .popup-content { background: white; padding: 20px; border-radius: 8px; max-width: 400px; text-align: center; }
-    .close { float: right; cursor: pointer; color: red; }
-    form input, form button { width: 100%; padding: 10px; margin: 5px 0; }
-    @media (max-width: 600px) { .container { padding: 10px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UrbanEstate - Événements</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; background: #f4f4f4; color: #333; }
+  header { background: #101820; color: #fff; padding: 30px 0; text-align: center; }
+  h1 { font-size: 2.5em; }
+  
+  .container { max-width: 1200px; margin: auto; padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  
+  .card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease; cursor: pointer; }
+  .card:hover { transform: translateY(-5px); }
+  
+  .card img { width: 100%; height: 200px; object-fit: cover; }
+  
+  .card-content { padding: 15px; }
+  .card-content h3 { margin-bottom: 10px; }
+  .card-content p { font-size: 0.9em; color: #666; }
+  .btn { display: inline-block; margin-top: 10px; background: #101820; color: #fff; padding: 10px 20px; border: none; border-radius: 20px; text-decoration: none; transition: background 0.3s ease; }
+  .btn:hover { background: #333; }
+
+  .popup { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+  .popup-content { background: #fff; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; position: relative; text-align: center; }
+  .popup-content span { position: absolute; top: 10px; right: 15px; cursor: pointer; font-size: 25px; color: red; }
+  
+  form input, form button { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc; }
+  form button { background: #101820; color: #fff; border: none; cursor: pointer; }
+  form button:hover { background: #333; }
+
+</style>
 </head>
 
 <body>
@@ -26,29 +41,39 @@
 </header>
 
 <div class="container">
-  <div class="event" onclick="openPopup('Gala Immobilier', 'Le 25 Juin 2025 à Tunis')">
-    <h3>Gala Immobilier</h3>
-    <p>Le 25 Juin 2025 à Tunis</p>
+  <div class="card" onclick="openPopup('Gala Immobilier','25 Juin 2025','paris.jpg')">
+    <img src="gala.jpg" alt="Gala Immobilier">
+    <div class="card-content">
+      <h3>Gala Immobilier</h3>
+      <p>Le 25 Juin 2025 à Tunis</p>
+      <a class="btn">Voir plus</a>
+    </div>
   </div>
 
-  <div class="event" onclick="openPopup('Salon Investissement', 'Le 10 Juillet 2025 à Souse')">
-    <h3>Salon Investissement</h3>
-    <p>Le 10 Juillet 2025 à Souse</p>
+  <div class="card" onclick="openPopup('Salon Investissement','10 Juillet 2025','lyon.jpg')">
+    <img src="salon.jpg" alt="Salon Investissement">
+    <div class="card-content">
+      <h3>Salon Investissement</h3>
+      <p>Le 10 Juillet 2025 à Souse</p>
+      <a class="btn">Voir plus</a>
+    </div>
   </div>
 
-  <div class="event" onclick="openPopup('Conférence Smart City', 'Le 5 Septembre 2025 à Sfax')">
-    <h3>Conférence Smart City</h3>
-    <p>Le 5 Septembre 2025 à Sfax</p>
+  <div class="card" onclick="openPopup('Conférence Smart City','5 Septembre 2025','marseille.jpg')">
+    <img src="img.jpg" alt="Conférence Smart City">
+    <div class="card-content">
+      <h3>Conférence Smart City</h3>
+      <p>Le 5 Septembre 2025 à Sfax</p>
+      <a class="btn">Voir plus</a>
+    </div>
   </div>
 </div>
 
 <div class="popup" id="popup">
   <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
+    <span onclick="closePopup()">&times;</span>
     <h2 id="eventTitle"></h2>
     <p id="eventDate"></p>
-
-    <h3>Inscription</h3>
     <form>
       <input type="text" placeholder="Votre nom" required>
       <input type="email" placeholder="Votre email" required>
@@ -58,15 +83,15 @@
 </div>
 
 <script>
-  function openPopup(title, date) {
-    document.getElementById('popup').style.display = 'flex';
-    document.getElementById('eventTitle').innerText = title;
-    document.getElementById('eventDate').innerText = date;
-  }
+function openPopup(title, date) {
+  document.getElementById('popup').style.display = 'flex';
+  document.getElementById('eventTitle').innerText = title;
+  document.getElementById('eventDate').innerText = date;
+}
 
-  function closePopup() {
-    document.getElementById('popup').style.display = 'none';
-  }
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
 </script>
 
 </body>
