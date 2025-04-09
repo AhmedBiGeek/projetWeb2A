@@ -1,0 +1,68 @@
+<div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items adv">
+  <div class="item">
+    <a href="property-details.html"><img src="assets/images/property-07.jpg" alt=""></a>
+    <span class="category">Beach House</span>
+    <h6>$799.000</h6>
+    <h4><a href="property-details.html">Djerba</a></h4>
+    <ul>
+      <li>Bedrooms: <span>5</span></li>
+      <li>Bathrooms: <span>4</span></li>
+      <li>Area: <span>320m2</span></li>
+      <li>Floor: <span>2</span></li>
+      <li>Parking: <span>4 spots</span></li>
+    </ul>
+    <div class="main-button">
+      <a href="property-details.html">Schedule a visit</a>
+    </div>
+  </div>
+</div>
+
+
+
++-----------------+         1    *        +-----------------+
+|     Immeuble    | ------------------>  |     Owner       |
++-----------------+                        +-----------------+
+| - id            |                        | - id            |
+| - category      |                        | - name          |
+| - price         |                        | - contactInfo   |
+| - location      |                        | - profileLink   |
+| - bedrooms      |                        +-----------------+
+| - bathrooms     |                        | + viewProfile() |
+| - area          |                        | + contactOwner()|
+| - floor         |                        +-----------------+
+| - parkingSpots  |                                  
++-----------------+
+| + showDetails() |
+| + scheduleVisit()|
++-----------------+
+
+
+php : 
+class Immeuble {
+    public $id;
+    public $category;
+    public $price;
+    public $location;
+    public $bedrooms;
+    public $bathrooms;
+    public $area;
+    public $floor;
+    public $parkingSpots;
+    public $owner_id;  // Foreign key to the Owner
+
+    public function showDetails() {
+        // Display property details
+    }
+
+    public function scheduleVisit() {
+        // Schedule a visit
+    }
+
+    public function getOwner($db) {
+        // Method to fetch the owner from the database
+        $query = "SELECT * FROM owners WHERE id = " . $this->owner_id;
+        // Fetch owner details using the db connection
+        return $db->fetch($query);
+    }
+}
+
