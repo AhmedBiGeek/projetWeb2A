@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back Office - UrbanEstate</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; background: #f0f2f5; color: #333; }
+header { background: #101820; color: #fff; padding: 20px; text-align: center; }
+.container { max-width: 1100px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+h1 { margin-bottom: 10px; }
+h2 { margin-top: 30px; }
+
+.table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.table th, .table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+.table th { background: #101820; color: #fff; }
+
+button, input, textarea { padding: 10px; margin: 5px 0; border-radius: 5px; border: 1px solid #ccc; width: 100%; }
+
+.action-btn { display: inline-block; background: #101820; color: #fff; border: none; padding: 8px 15px; cursor: pointer; border-radius: 5px; margin: 2px; }
+.action-btn:hover { background: #333; }
+
+form { margin-top: 20px; }
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>UrbanEstate - Back Office Gestion des Événements</h1>
+</header>
+
+<div class="container">
+
+  <h2>Liste des Événements</h2>
+
+  <table class="table" id="eventTable">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Date</th>
+        <th>Ville</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Ajouter / Modifier un Événement</h2>
+
+  <form id="eventForm">
+    <input type="text" id="title" placeholder="Titre de l'événement" required>
+    <input type="date" id="date" required>
+    <input type="text" id="city" placeholder="Ville" required>
+    <input type="text" id="image" placeholder="URL de l'image" required>
+    <input type="hidden" id="editIndex">
+    <button type="submit">Enregistrer</button>
+  </form>
+
+</div>
+
+<script>
+let events = [];
+
+function displayEvents() {
+  const tableBody = document.querySelector('#eventTable tbody');
+  tableBody.innerHTML = '';
+  events.forEach((event, index) => {
+    tableBody.innerHTML += `
+      <tr>
+        <td>${event.title}</td>
+        <td>${event.date}</td>
+        <td>${event.city}</td>
+        <td><img src="${event.image}" alt="img" style="width:80px;height:50px;"></td>
+        <td>
+          <button class="action-btn" onclick="editEvent(${index})">Modifier</button>
+          <button class="action-btn" onclick="deleteEvent(${index})">Supprimer</button>
+        </td>
+      </tr>
+    `;
+  });
+}
+
+document.getElementById('eventForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const title = document.getElementById('title').value;
+  const date = document.getElementById('date').value;
+  const city = document.getElementById('city').value;
+  const image = document.getElementById('image').value;
+  const editIndex = document.getElementById('editIndex').value;
+
+  const eventData = { title, date, city, image };
+
+  if (editIndex === '') {
+    events.push(eventData);
+  } else {
+    events[editIndex] = eventData;
+    document.getElementById('editIndex').value = '';
+  }
+
+  this.reset();
+  displayEvents();
+});
+
+function editEvent(index) {
+  const event = events[index];
+  document.getElementById('title').value = event.title;
+  document.getElementById('date').value = event.date;
+  document.getElementById('city').value = event.city;
+  document.getElementById('image').value = event.image;
+  document.getElementById('editIndex').value = index;
+}
+
+function deleteEvent(index) {
+  if (confirm('Voulez-vous supprimer cet événement ?')) {
+    events.splice(index, 1);
+    displayEvents();
+  }
+}
+
+displayEvents();
+</script>
+
+</body>
+</html>
