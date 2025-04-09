@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Page des Sponsors</title>
+  <style>
+    /* S'assure que le body prend toute la hauteur de l'écran */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('assets/images/fondSponsor.jpeg'); /* Image de fond */
+      background-size: cover; /* L'image couvre tout l'écran */
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .content {
+      background-color: rgba(255, 255, 255, 0.9);
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+
+    .logo-box {
+      text-align: center;
+      width: 200px;
+    }
+
+    .logo-box img {
+      width: 150px;
+      margin-bottom: 15px;
+    }
+
+    .logo-box p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <p>Bienvenue ! Voici les partenaires et sponsors visibles par les visiteurs de la plateforme.</p>
+
+    <div class="logo-container">
+      <!-- Sponsor 1 -->
+      <div class="logo-box">
+        <img src="assets/images/sponsor1.jpeg" alt="Sponsor 1">
+        <p>Spécialisée dans la vente, la location, et la gestion de biens immobiliers en Tunisie.
+
+        </p>
+      </div>
+
+      <!-- Sponsor 2 -->
+      <div class="logo-box">
+        <img src="assets/images/sponsor2.png" alt="Sponsor 2">
+        <p>Un promoteur immobilier important avec des projets dans plusieurs régions de la Tunisie.
+
+        </p>
+      </div>
+    </div>
+
+    <button onclick="window.location.href='index.html'">Retour à l'accueil</button>
+  </div>
+
+</body>
+</html>

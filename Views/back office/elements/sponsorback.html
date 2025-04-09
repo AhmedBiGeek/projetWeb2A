@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!-- [Head] start -->
+<head>
+  <title>Immeuble Management | Contrats Sponsors</title>
+  <!-- [Meta] -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Gestion des contrats sponsors">
+  <meta name="keywords" content="Sponsors, Contrats, Management">
+  <meta name="author" content="Your Name">
+
+  <!-- [Favicon] icon -->
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon">
+  <!-- [Google Font] Family -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+  <!-- [Tabler Icons] https://tablericons.com -->
+  <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+  <!-- [Feather Icons] https://feathericons.com -->
+  <link rel="stylesheet" href="../assets/fonts/feather.css">
+  <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+  <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+  <!-- [Material Icons] https://fonts.google.com/icons -->
+  <link rel="stylesheet" href="../assets/fonts/material.css">
+  <!-- [Template CSS Files] -->
+  <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link">
+  <link rel="stylesheet" href="../assets/css/style-preset.css">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+  <!-- [ Pre-loader ] start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+  <!-- [ Pre-loader ] End -->
+
+  <!-- [ Sidebar Menu ] start -->
+  <nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+      <div class="m-header">
+        <a href="../dashboard/index.html" class="b-brand text-primary">
+          <!-- ========   Change your logo from here   ============ -->
+          <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
+        </a>
+      </div>
+      <div class="navbar-content">
+        <ul class="pc-navbar">
+          <li class="pc-item">
+            <a href="../dashboard/index.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+              <span class="pc-mtext">Dashboard</span>
+            </a>
+          </li>
+  
+          <li class="pc-item pc-caption">
+            <label>UI Components</label>
+            <i class="ti ti-dashboard"></i>
+          </li>
+          <li class="pc-item">
+            <a href="../elements/usersback.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-user"></i></span>
+              <span class="pc-mtext">Users</span>
+            </a>
+          </li>
+
+          <li class="pc-item pc-caption">
+            <label>Pages</label>
+            <i class="ti ti-news"></i>
+          </li>
+          <li class="pc-item">
+            <a href="../pages/immeuble.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-building"></i></span>
+              <span class="pc-mtext">Immeuble</span>
+            </a>
+          </li>
+          <li class="pc-item pc-active">
+            <a href="../pages/sponsors.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-brand-cashapp"></i></span>
+              <span class="pc-mtext">Sponsors</span>
+            </a>
+          </li>
+          <li class="pc-item">
+            <a href="../pages/login.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-lock"></i></span>
+              <span class="pc-mtext">Login</span>
+            </a>
+          </li>
+          <li class="pc-item">
+            <a href="../pages/register.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-user-plus"></i></span>
+              <span class="pc-mtext">Register</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- [ Sidebar Menu ] end -->
+
+  <!-- [ Header ] start -->
+  <header class="pc-header">
+    <div class="header-wrapper">
+      <!-- Your header content here -->
+    </div>
+  </header>
+  <!-- [ Header ] end -->
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h5 class="m-b-10">Gestion des Sponsors</h5>
+              </div>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript: void(0)">Pages</a></li>
+                <li class="breadcrumb-item" aria-current="page">Sponsors</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Liste des Sponsors</h5>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addSponsorModal">
+                <i class="ti ti-plus"></i> Ajouter un Sponsor
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table id="sponsorTable" class="table table-striped table-bordered nowrap" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>ID Sponsor</th>
+                      <th>Nom</th>
+                      <th>Logo</th>
+                      <th>Site Web</th>
+                      <th>Service</th>
+                      <th>Date début</th>
+                      <th>Date fin</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Sample data -->
+                    <tr>
+                      <td>SP001</td>
+                      <td>Sponsor A</td>
+                      <td><img src="https://via.placeholder.com/50" alt="Logo" class="img-fluid" style="max-height: 30px;"></td>
+                      <td><a href="https://example.com" target="_blank">Visiter</a></td>
+                      <td>Publicité sur plateforme</td>
+                      <td>2025-01-01</td>
+                      <td>2025-06-30</td>
+                      <td>
+                        <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewSponsorModal">
+                          <i class="ti ti-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editSponsorModal">
+                          <i class="ti ti-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSponsorModal">
+                          <i class="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SP002</td>
+                      <td>Sponsor B</td>
+                      <td><img src="https://via.placeholder.com/50" alt="Logo" class="img-fluid" style="max-height: 30px;"></td>
+                      <td><a href="https://example.com" target="_blank">Visiter</a></td>
+                      <td>Partenaire rénovation</td>
+                      <td>2025-02-15</td>
+                      <td>2025-08-15</td>
+                      <td>
+                        <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewSponsorModal">
+                          <i class="ti ti-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editSponsorModal">
+                          <i class="ti ti-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSponsorModal">
+                          <i class="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
+  <!-- [ Main Content ] end -->
+
+  <!-- Add Sponsor Modal -->
+  <div class="modal fade" id="addSponsorModal" tabindex="-1" aria-labelledby="addSponsorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addSponsorModalLabel">Ajouter un Sponsor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addSponsorForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="sponsorName" class="form-label">Nom du Sponsor</label>
+                  <input type="text" class="form-control" id="sponsorName" name="sponsorName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="logo" class="form-label">Logo du Sponsor (URL)</label>
+                  <input type="text" class="form-control" id="logo" name="logo" required>
+                </div>
+                <div class="mb-3">
+                  <label for="website" class="form-label">Lien vers leur site</label>
+                  <input type="url" class="form-control" id="website" name="website" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Service</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="service" id="service1" value="Publicité sur plateforme" required>
+                    <label class="form-check-label" for="service1">Publicité sur plateforme</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="service" id="service2" value="Partenaire rénovation">
+                    <label class="form-check-label" for="service2">Partenaire rénovation</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="service" id="service3" value="Partenaire événementiel">
+                    <label class="form-check-label" for="service3">Partenaire événementiel</label>
+                  </div>
+                  <div id="serviceError" class="invalid-feedback" style="display:none;">Veuillez sélectionner un service.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="startDate" class="form-label">Date de début</label>
+                  <input type="date" class="form-control" id="startDate" name="startDate" required>
+                </div>
+                <div class="mb-3">
+                  <label for="endDate" class="form-label">Date de fin</label>
+                  <input type="date" class="form-control" id="endDate" name="endDate" required>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary" id="submitAddSponsor">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Sponsor Modal -->
+  <div class="modal fade" id="viewSponsorModal" tabindex="-1" aria-labelledby="viewSponsorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewSponsorModalLabel">Détails du Sponsor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>ID:</strong> <span id="viewSponsorId">SP001</span></p>
+              <p><strong>Nom:</strong> <span id="viewSponsorName">Sponsor A</span></p>
+              <p><strong>Service:</strong> <span id="viewSponsorService">Publicité sur plateforme</span></p>
+              <p><strong>Date début:</strong> <span id="viewSponsorStartDate">2025-01-01</span></p>
+              <p><strong>Date fin:</strong> <span id="viewSponsorEndDate">2025-06-30</span></p>
+            </div>
+            <div class="col-md-6 text-center">
+              <img id="viewSponsorLogo" src="https://via.placeholder.com/150" alt="Logo" class="img-fluid mb-3" style="max-height: 150px;">
+              <a id="viewSponsorWebsite" href="https://example.com" target="_blank" class="btn btn-primary btn-sm">Visiter le site</a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Sponsor Modal -->
+  <div class="modal fade" id="editSponsorModal" tabindex="-1" aria-labelledby="editSponsorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editSponsorModalLabel">Modifier un Sponsor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editSponsorForm">
+            <input type="hidden" id="editSponsorId" value="SP001">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="editSponsorName" class="form-label">Nom du Sponsor</label>
+                  <input type="text" class="form-control" id="editSponsorName" value="Sponsor A">
+                </div>
+                <div class="mb-3">
+                  <label for="editLogo" class="form-label">Logo du Sponsor (URL)</label>
+                  <input type="text" class="form-control" id="editLogo" value="https://via.placeholder.com/150">
+                </div>
+                <div class="mb-3">
+                  <label for="editWebsite" class="form-label">Lien vers leur site</label>
+                  <input type="url" class="form-control" id="editWebsite" value="https://example.com">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Service</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="editService" id="editService1" value="Publicité sur plateforme" checked>
+                    <label class="form-check-label" for="editService1">Publicité sur plateforme</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="editService" id="editService2" value="Partenaire rénovation">
+                    <label class="form-check-label" for="editService2">Partenaire rénovation</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="editService" id="editService3" value="Partenaire événementiel">
+                    <label class="form-check-label" for="editService3">Partenaire événementiel</label>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="editStartDate" class="form-label">Date de début</label>
+                  <input type="date" class="form-control" id="editStartDate" value="2025-01-01">
+                </div>
+                <div class="mb-3">
+                  <label for="editEndDate" class="form-label">Date de fin</label>
+                  <input type="date" class="form-control" id="editEndDate" value="2025-06-30">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="deleteSponsorModal" tabindex="-1" aria-labelledby="deleteSponsorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteSponsorModalLabel">Confirmer la suppression</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir supprimer ce sponsor? Cette action est irréversible.</p>
+          <p><strong>ID:</strong> <span id="deleteSponsorId">SP001</span></p>
+          <p><strong>Nom:</strong> <span id="deleteSponsorName">Sponsor A</span></p>
+          <p><strong>Service:</strong> <span id="deleteSponsorService">Publicité sur plateforme</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-danger">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Required Js -->
+  <script src="../assets/js/plugins/popper.min.js"></script>
+  <script src="../assets/js/plugins/simplebar.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap.min.js"></script>
+  <script src="../assets/js/fonts/custom-font.js"></script>
+  <script src="../assets/js/pcoded.js"></script>
+  <script src="../assets/js/plugins/feather.min.js"></script>
+  
+  <!-- DataTables JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+  <script>
+    // Initialize DataTable
+    $(document).ready(function() {
+      $('#sponsorTable').DataTable({
+        responsive: true,
+        language: {
+          url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
+        }
+      });
+
+      // Sample data for sponsors
+      let sponsors = [
+        { 
+          id: 'SP001', 
+          name: 'Sponsor A', 
+          logo: 'https://via.placeholder.com/50', 
+          website: 'https://example.com',
+          service: 'Publicité sur plateforme', 
+          startDate: '2025-01-01', 
+          endDate: '2025-06-30' 
+        },
+        { 
+          id: 'SP002', 
+          name: 'Sponsor B', 
+          logo: 'https://via.placeholder.com/50', 
+          website: 'https://example.com',
+          service: 'Partenaire rénovation', 
+          startDate: '2025-02-15', 
+          endDate: '2025-08-15' 
+        }
+      ];
+
+      // Function to display sponsors in the table
+      function displaySponsors() {
+        const tableBody = $('#sponsorTable tbody');
+        tableBody.empty();
+        
+        sponsors.forEach(sponsor => {
+          const row = `
+            <tr>
+              <td>${sponsor.id}</td>
+              <td>${sponsor.name}</td>
+              <td><img src="${sponsor.logo}" alt="Logo" class="img-fluid" style="max-height: 30px;"></td>
+              <td><a href="${sponsor.website}" target="_blank">Visiter</a></td>
+              <td>${sponsor.service}</td>
+              <td>${sponsor.startDate}</td>
+              <td>${sponsor.endDate}</td>
+              <td>
+                <button class="btn btn-sm btn-info view-sponsor" data-id="${sponsor.id}">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-warning edit-sponsor" data-id="${sponsor.id}">
+                  <i class="ti ti-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger delete-sponsor" data-id="${sponsor.id}">
+                  <i class="ti ti-trash"></i>
+                </button>
+              </td>
+            </tr>
+          `;
+          tableBody.append(row);
+        });
+      }
+
+      // Add new sponsor
+      $('#submitAddSponsor').click(function() {
+        const selectedService = $('input[name="service"]:checked');
+        if (!selectedService.length) {
+          $('#serviceError').show();
+          return;
+        }
+        $('#serviceError').hide();
+
+        const newSponsor = {
+          id: 'SP' + (sponsors.length + 1).toString().padStart(3, '0'),
+          name: $('#sponsorName').val(),
+          logo: $('#logo').val(),
+          website: $('#website').val(),
+          service: selectedService.val(),
+          startDate: $('#startDate').val(),
+          endDate: $('#endDate').val()
+        };
+        
+        sponsors.push(newSponsor);
+        displaySponsors();
+        $('#addSponsorModal').modal('hide');
+        $('#addSponsorForm')[0].reset();
+      });
+
+      // View sponsor details
+      $(document).on('click', '.view-sponsor', function() {
+        const sponsorId = $(this).data('id');
+        const sponsor = sponsors.find(s => s.id === sponsorId);
+        
+        if (sponsor) {
+          $('#viewSponsorId').text(sponsor.id);
+          $('#viewSponsorName').text(sponsor.name);
+          $('#viewSponsorLogo').attr('src', sponsor.logo);
+          $('#viewSponsorWebsite').attr('href', sponsor.website);
+          $('#viewSponsorService').text(sponsor.service);
+          $('#viewSponsorStartDate').text(sponsor.startDate);
+          $('#viewSponsorEndDate').text(sponsor.endDate);
+          
+          $('#viewSponsorModal').modal('show');
+        }
+      });
+
+      // Edit sponsor
+      $(document).on('click', '.edit-sponsor', function() {
+        const sponsorId = $(this).data('id');
+        const sponsor = sponsors.find(s => s.id === sponsorId);
+        
+        if (sponsor) {
+          $('#editSponsorId').val(sponsor.id);
+          $('#editSponsorName').val(sponsor.name);
+          $('#editLogo').val(sponsor.logo);
+          $('#editWebsite').val(sponsor.website);
+          $(`input[name="editService"][value="${sponsor.service}"]`).prop('checked', true);
+          $('#editStartDate').val(sponsor.startDate);
+          $('#editEndDate').val(sponsor.endDate);
+          
+          $('#editSponsorModal').modal('show');
+        }
+      });
+
+      // Delete sponsor
+      $(document).on('click', '.delete-sponsor', function() {
+        const sponsorId = $(this).data('id');
+        const sponsor = sponsors.find(s => s.id === sponsorId);
+        
+        if (sponsor) {
+          $('#deleteSponsorId').text(sponsor.id);
+          $('#deleteSponsorName').text(sponsor.name);
+          $('#deleteSponsorService').text(sponsor.service);
+          
+          $('#deleteSponsorModal').modal('show');
+        }
+      });
+
+      // Confirm delete
+      $('#deleteSponsorModal .btn-danger').click(function() {
+        const sponsorId = $('#deleteSponsorId').text();
+        sponsors = sponsors.filter(s => s.id !== sponsorId);
+        displaySponsors();
+        $('#deleteSponsorModal').modal('hide');
+      });
+
+      // Initialize the table with sample data
+      displaySponsors();
+    });
+  </script>
+</body>
+<!-- [Body] end -->
+</html>
