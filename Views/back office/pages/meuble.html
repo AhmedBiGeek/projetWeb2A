@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des Meubles</title>
+  <!-- Inclure les mêmes CSS que dans votre template principal -->
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style-preset.css">
+  <style>
+    .meuble-card {
+      transition: all 0.3s ease;
+    }
+    .meuble-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .badge-type {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- [ Header ] -->
+  <!-- Inclure le même header que votre template -->
+
+  <!-- [ Main Content ] -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h4 class="m-0">Gestion des Meubles</h4>
+                  <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../dashboard/index.html">Accueil</a></li>
+                    <li class="breadcrumb-item">Meubles</li>
+                  </ul>
+                </div>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meubleModal">
+                  <i class="ti ti-plus me-1"></i> Nouveau Meuble
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card meuble-card">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nom</th>
+                      <th>Type</th>
+                      <th>Prix</th>
+                      <th>Quantité</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>Chaise en bois</strong></td>
+                      <td><span class="badge bg-light-primary badge-type">Chaise</span></td>
+                      <td>50 €</td>
+                      <td>10</td>
+                      <td>
+                        <button class="btn btn-sm btn-icon btn-warning me-1">
+                          <i class="ti ti-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-danger">
+                          <i class="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>Table basse</strong></td>
+                      <td><span class="badge bg-light-success badge-type">Table</span></td>
+                      <td>120 €</td>
+                      <td>5</td>
+                      <td>
+                        <button class="btn btn-sm btn-icon btn-warning me-1">
+                          <i class="ti ti-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-icon btn-danger">
+                          <i class="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="meubleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ajouter un nouveau meuble</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Nom du meuble</label>
+                <input type="text" class="form-control" placeholder="Ex: Chaise en bois">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Type</label>
+                <select class="form-select">
+                  <option value="" disabled selected>Sélectionner un type</option>
+                  <option>Chaise</option>
+                  <option>Table</option>
+                  <option>Armoire</option>
+                  <option>Canapé</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Prix (€)</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" placeholder="Ex: 50">
+                  <span class="input-group-text">€</span>
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Quantité en stock</label>
+                <input type="number" class="form-control" placeholder="Ex: 10">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" rows="3" placeholder="Description du meuble..."></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/plugins/bootstrap.min.js"></script>
+  <script>
+    // Activer les tooltips
+    document.addEventListener('DOMContentLoaded', function() {
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      });
+    });
+  </script>
+</body>
+</html>
