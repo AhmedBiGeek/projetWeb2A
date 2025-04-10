@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+<head>
+  <title>Immeuble Management | Admin Template</title>
+  <!-- [Meta] -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Immeuble management page">
+  <meta name="keywords" content="Immeuble, Buildings, Management">
+  <meta name="author" content="Your Name">
+
+  <!-- [Favicon] icon -->
+  <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon">
+  <!-- [Google Font] Family -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+  <!-- [Tabler Icons] https://tablericons.com -->
+  <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+  <!-- [Feather Icons] https://feathericons.com -->
+  <link rel="stylesheet" href="../assets/fonts/feather.css">
+  <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+  <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+  <!-- [Material Icons] https://fonts.google.com/icons -->
+  <link rel="stylesheet" href="../assets/fonts/material.css">
+  <!-- [Template CSS Files] -->
+  <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link">
+  <link rel="stylesheet" href="../assets/css/style-preset.css">
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+  <style>
+    .progress-container {
+      margin-bottom: 20px;
+      background: #f1f1f1;
+      border-radius: 5px;
+    }
+    .progress-bar {
+      height: 20px;
+      background: #4680ff;
+      border-radius: 5px;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+    }
+    .badge-reserved {
+      background-color: #ff5252;
+      color: white;
+    }
+    .badge-available {
+      background-color: #4caf50;
+      color: white;
+    }
+  </style>
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+ <!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+      <div class="m-header">
+        <a href="../dashboard/index.html" class="b-brand text-primary">
+          <!-- ========   Change your logo from here   ============ -->
+          <img src="../assets/images/logo-dark.svg" class="img-fluid logo-lg" alt="logo">
+        </a>
+      </div>
+      <div class="navbar-content">
+        <ul class="pc-navbar">
+          <li class="pc-item">
+            <a href="../dashboard/index.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+              <span class="pc-mtext">Dashboard</span>
+            </a>
+          </li>
+  
+          <li class="pc-item pc-caption">
+            <label>UI Components</label>
+            <i class="ti ti-dashboard"></i>
+          </li>
+          <li class="pc-item">
+            <a href="../elements/usersback.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-user"></i></span>
+              <span class="pc-mtext">Users</span>
+            </a>
+  
+          <li class="pc-item pc-caption">
+            <label>Pages</label>
+            <i class="ti ti-news"></i>
+          </li>
+          <li class="pc-item">
+            <a href="../pages/immeuble.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-building"></i></span>
+              <span class="pc-mtext">Immeuble</span>
+            </a>
+          </li>
+          <li class="pc-item">
+            <a href="../pages/login.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-lock"></i></span>
+              <span class="pc-mtext">Login</span>
+            </a>
+          </li>
+          <li class="pc-item">
+            <a href="../pages/register.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-user-plus"></i></span>
+              <span class="pc-mtext">Register</span>
+            </a>
+          </li>
+  
+          <li class="pc-item pc-caption">
+            <label>Other</label>
+            <i class="ti ti-brand-chrome"></i>
+          </li>
+          <li class="pc-item pc-hasmenu">
+            <a href="#!" class="pc-link"><span class="pc-micon"><i class="ti ti-menu"></i></span><span class="pc-mtext">Menu
+                levels</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="pc-submenu">
+              <li class="pc-item"><a class="pc-link" href="#!">Level 2.1</a></li>
+              <li class="pc-item pc-hasmenu">
+                <a href="#!" class="pc-link">Level 2.2<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                <ul class="pc-submenu">
+                  <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
+                  <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
+                  <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                      <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
+                      <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li class="pc-item pc-hasmenu">
+                <a href="#!" class="pc-link">Level 2.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                <ul class="pc-submenu">
+                  <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
+                  <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
+                  <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                      <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
+                      <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="pc-item">
+            <a href="../other/sample-page.html" class="pc-link">
+              <span class="pc-micon"><i class="ti ti-brand-chrome"></i></span>
+              <span class="pc-mtext">Sample page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- [ Sidebar Menu ] end -->
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+  <!-- [ Pre-loader ] start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+  <!-- [ Pre-loader ] End -->
+
+  <!-- [ Header ] start -->
+  <header class="pc-header">
+    <!-- Your header content here (same as in your main file) -->
+  </header>
+  <!-- [ Header ] end -->
+
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h5 class="m-b-10">Immeuble Management</h5>
+              </div>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript: void(0)">Pages</a></li>
+                <li class="breadcrumb-item" aria-current="page">Immeuble</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h5>Immeuble List</h5>
+              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addImmeubleModal">
+                <i class="ti ti-plus"></i> Add New Immeuble
+              </button>
+            </div>
+            <div class="card-body">
+              <!-- Reservation Status Summary -->
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Reservation Status</h5>
+                      <div class="progress-container">
+                        <div class="progress-bar" id="reservationProgress" style="width: 30%">30% Reserved</div>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <span><i class="fas fa-circle text-success"></i> Available: 7</span>
+                        <span><i class="fas fa-circle text-danger"></i> Reserved: 3</span>
+                        <span><i class="fas fa-circle text-primary"></i> Total: 10</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="table-responsive">
+                <table id="immeubleTable" class="table table-striped table-bordered nowrap" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Location</th>
+                      <th>Bedrooms</th>
+                      <th>Bathrooms</th>
+                      <th>Area (m²)</th>
+                      <th>Floor</th>
+                      <th>Parking</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Sample data - in a real app this would come from a database -->
+                    <tr>
+                      <td>1</td>
+                      <td>Apartment</td>
+                      <td>$250,000</td>
+                      <td>Downtown</td>
+                      <td>3</td>
+                      <td>2</td>
+                      <td>120</td>
+                      <td>5</td>
+                      <td>1</td>
+                      <td><span class="badge badge-reserved">Reserved</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewImmeubleModal">
+                          <i class="ti ti-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editImmeubleModal">
+                          <i class="ti ti-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteImmeubleModal">
+                          <i class="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Villa</td>
+                      <td>$450,000</td>
+                      <td>Suburbs</td>
+                      <td>4</td>
+                      <td>3</td>
+                      <td>220</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td><span class="badge badge-available">Available</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewImmeubleModal">
+                          <i class="ti ti-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editImmeubleModal">
+                          <i class="ti ti-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteImmeubleModal">
+                          <i class="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Office</td>
+                      <td>$350,000</td>
+                      <td>Business District</td>
+                      <td>-</td>
+                      <td>2</td>
+                      <td>180</td>
+                      <td>3</td>
+                      <td>2</td>
+                      <td><span class="badge badge-available">Available</span></td>
+                      <td>
+                        <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewImmeubleModal">
+                          <i class="ti ti-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editImmeubleModal">
+                          <i class="ti ti-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteImmeubleModal">
+                          <i class="ti ti-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
+  <!-- [ Main Content ] end -->
+
+  <!-- Add Immeuble Modal -->
+  <div class="modal fade" id="addImmeubleModal" tabindex="-1" aria-labelledby="addImmeubleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addImmeubleModalLabel">Add New Immeuble</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addImmeubleForm">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="category" class="form-label">Category</label>
+                  <select class="form-select" id="category" required>
+                    <option value="">Select Category</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Office">Office</option>
+                    <option value="Commercial">Commercial</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" id="price" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="location" class="form-label">Location</label>
+                  <input type="text" class="form-control" id="location" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="bedrooms" class="form-label">Bedrooms</label>
+                  <input type="number" class="form-control" id="bedrooms">
+                </div>
+                <div class="mb-3">
+                  <label for="bathrooms" class="form-label">Bathrooms</label>
+                  <input type="number" class="form-control" id="bathrooms" required>
+                </div>
+                <div class="mb-3">
+                  <label for="area" class="form-label">Area (m²)</label>
+                  <input type="number" class="form-control" id="area" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="floor" class="form-label">Floor</label>
+                  <input type="number" class="form-control" id="floor" required>
+                </div>
+                <div class="mb-3">
+                  <label for="status" class="form-label">Status</label>
+                  <select class="form-select" id="status" required>
+                    <option value="available" selected>Available</option>
+                    <option value="reserved">Reserved</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="parkingSpots" class="form-label">Parking Spots</label>
+                  <input type="number" class="form-control" id="parkingSpots" required>
+                </div>
+                <div class="mb-3" id="reservationFields" style="display: none;">
+                  <label for="reservedBy" class="form-label">Reserved By</label>
+                  <input type="text" class="form-control" id="reservedBy" placeholder="Client name">
+                  <label for="reservedUntil" class="form-label mt-2">Reserved Until</label>
+                  <input type="date" class="form-control" id="reservedUntil">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Save Immeuble</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Immeuble Modal -->
+  <div class="modal fade" id="viewImmeubleModal" tabindex="-1" aria-labelledby="viewImmeubleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewImmeubleModalLabel">Immeuble Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <p><strong>ID:</strong> <span id="viewId">1</span></p>
+              <p><strong>Category:</strong> <span id="viewCategory">Apartment</span></p>
+              <p><strong>Price:</strong> <span id="viewPrice">$250,000</span></p>
+              <p><strong>Location:</strong> <span id="viewLocation">Downtown</span></p>
+              <p><strong>Status:</strong> <span id="viewStatus" class="badge badge-reserved">Reserved</span></p>
+            </div>
+            <div class="col-md-6">
+              <p><strong>Bedrooms:</strong> <span id="viewBedrooms">3</span></p>
+              <p><strong>Bathrooms:</strong> <span id="viewBathrooms">2</span></p>
+              <p><strong>Area:</strong> <span id="viewArea">120 m²</span></p>
+              <p><strong>Floor:</strong> <span id="viewFloor">5</span></p>
+              <p><strong>Parking Spots:</strong> <span id="viewParking">1</span></p>
+            </div>
+          </div>
+          <div id="reservationDetails" class="mt-3 p-3 bg-light rounded">
+            <h6>Reservation Details</h6>
+            <p><strong>Reserved By:</strong> <span id="viewReservedBy">John Doe</span></p>
+            <p><strong>Reserved Until:</strong> <span id="viewReservedUntil">2023-12-31</span></p>
+            <p><strong>Contact:</strong> <span id="viewContact">john.doe@example.com | +1234567890</span></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#scheduleVisitModal">Schedule Visit</button>
+          <button type="button" class="btn btn-success" id="markAvailableBtn">Mark as Available</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Immeuble Modal -->
+  <div class="modal fade" id="editImmeubleModal" tabindex="-1" aria-labelledby="editImmeubleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editImmeubleModalLabel">Edit Immeuble</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editImmeubleForm">
+            <input type="hidden" id="editId" value="1">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="editCategory" class="form-label">Category</label>
+                  <select class="form-select" id="editCategory" required>
+                    <option value="Apartment" selected>Apartment</option>
+                    <option value="Villa">Villa</option>
+                    <option value="Office">Office</option>
+                    <option value="Commercial">Commercial</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="editPrice" class="form-label">Price</label>
+                  <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" class="form-control" id="editPrice" value="250000" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="editLocation" class="form-label">Location</label>
+                  <input type="text" class="form-control" id="editLocation" value="Downtown" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="editBedrooms" class="form-label">Bedrooms</label>
+                  <input type="number" class="form-control" id="editBedrooms" value="3">
+                </div>
+                <div class="mb-3">
+                  <label for="editBathrooms" class="form-label">Bathrooms</label>
+                  <input type="number" class="form-control" id="editBathrooms" value="2" required>
+                </div>
+                <div class="mb-3">
+                  <label for="editArea" class="form-label">Area (m²)</label>
+                  <input type="number" class="form-control" id="editArea" value="120" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="editFloor" class="form-label">Floor</label>
+                  <input type="number" class="form-control" id="editFloor" value="5" required>
+                </div>
+                <div class="mb-3">
+                  <label for="editStatus" class="form-label">Status</label>
+                  <select class="form-select" id="editStatus" required>
+                    <option value="available">Available</option>
+                    <option value="reserved" selected>Reserved</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="editParkingSpots" class="form-label">Parking Spots</label>
+                  <input type="number" class="form-control" id="editParkingSpots" value="1" required>
+                </div>
+                <div class="mb-3" id="editReservationFields">
+                  <label for="editReservedBy" class="form-label">Reserved By</label>
+                  <input type="text" class="form-control" id="editReservedBy" value="John Doe">
+                  <label for="editReservedUntil" class="form-label mt-2">Reserved Until</label>
+                  <input type="date" class="form-control" id="editReservedUntil" value="2023-12-31">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Update Immeuble</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="deleteImmeubleModal" tabindex="-1" aria-labelledby="deleteImmeubleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteImmeubleModalLabel">Confirm Delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this immeuble? This action cannot be undone.</p>
+          <p><strong>ID:</strong> <span id="deleteId">1</span></p>
+          <p><strong>Category:</strong> <span id="deleteCategory">Apartment</span></p>
+          <p><strong>Location:</strong> <span id="deleteLocation">Downtown</span></p>
+          <p><strong>Status:</strong> <span id="deleteStatus" class="badge badge-reserved">Reserved</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger">Delete Immeuble</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schedule Visit Modal -->
+  <div class="modal fade" id="scheduleVisitModal" tabindex="-1" aria-labelledby="scheduleVisitModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="scheduleVisitModalLabel">Schedule a Visit</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="scheduleVisitForm">
+            <div class="mb-3">
+              <label for="visitClientName" class="form-label">Client Name</label>
+              <input type="text" class="form-control" id="visitClientName" required>
+            </div>
+            <div class="mb-3">
+              <label for="visitClientEmail" class="form-label">Client Email</label>
+              <input type="email" class="form-control" id="visitClientEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="visitClientPhone" class="form-label">Client Phone</label>
+              <input type="tel" class="form-control" id="visitClientPhone" required>
+            </div>
+            <div class="mb-3">
+              <label for="visitDate" class="form-label">Date</label>
+              <input type="date" class="form-control" id="visitDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="visitTime" class="form-label">Time</label>
+              <input type="time" class="form-control" id="visitTime" required>
+            </div>
+            <div class="mb-3">
+              <label for="visitNotes" class="form-label">Notes</label>
+              <textarea class="form-control" id="visitNotes" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Schedule Visit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reserve Immeuble Modal -->
+  <div class="modal fade" id="reserveImmeubleModal" tabindex="-1" aria-labelledby="reserveImmeubleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reserveImmeubleModalLabel">Reserve Immeuble</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="reserveImmeubleForm">
+            <input type="hidden" id="reserveImmeubleId" value="">
+            <div class="mb-3">
+              <label for="reserveClientName" class="form-label">Client Name</label>
+              <input type="text" class="form-control" id="reserveClientName" required>
+            </div>
+            <div class="mb-3">
+              <label for="reserveClientEmail" class="form-label">Client Email</label>
+              <input type="email" class="form-control" id="reserveClientEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="reserveClientPhone" class="form-label">Client Phone</label>
+              <input type="tel" class="form-control" id="reserveClientPhone" required>
+            </div>
+            <div class="mb-3">
+              <label for="reserveUntil" class="form-label">Reserved Until</label>
+              <input type="date" class="form-control" id="reserveUntil" required>
+            </div>
+            <div class="mb-3">
+              <label for="reserveNotes" class="form-label">Notes</label>
+              <textarea class="form-control" id="reserveNotes" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Confirm Reservation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Required Js -->
+  <script src="../assets/js/plugins/popper.min.js"></script>
+  <script src="../assets/js/plugins/simplebar.min.js"></script>
+  <script src="../assets/js/plugins/bootstrap.min.js"></script>
+  <script src="../assets/js/fonts/custom-font.js"></script>
+  <script src="../assets/js/pcoded.js"></script>
+  <script src="../assets/js/plugins/feather.min.js"></script>
+  
+  <!-- DataTables JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+  <script>
+    // Initialize DataTable
+    $(document).ready(function() {
+      $('#immeubleTable').DataTable({
+        responsive: true
+      });
+
+      // Show/hide reservation fields based on status
+      $('#status').change(function() {
+        if ($(this).val() === 'reserved') {
+          $('#reservationFields').show();
+        } else {
+          $('#reservationFields').hide();
+        }
+      });
+
+      $('#editStatus').change(function() {
+        if ($(this).val() === 'reserved') {
+          $('#editReservationFields').show();
+        } else {
+          $('#editReservationFields').hide();
+        }
+      });
+
+      // Update progress bar (in a real app, this would calculate from actual data)
+      function updateReservationProgress() {
+        const total = 10; // Total apartments
+        const reserved = 3; // Reserved apartments
+        const percentage = (reserved / total) * 100;
+        $('#reservationProgress').css('width', percentage + '%').text(percentage + '% Reserved');
+      }
+
+      updateReservationProgress();
+
+      // Mark as available button
+      $('#markAvailableBtn').click(function() {
+        // In a real app, this would make an AJAX call to update the status
+        alert('This apartment has been marked as available');
+        $('#viewStatus').removeClass('badge-reserved').addClass('badge-available').text('Available');
+        $('#reservationDetails').hide();
+        $(this).hide();
+        updateReservationProgress();
+      });
+
+      // Sample data for demonstration
+      const sampleData = [
+        { id: 1, category: 'Apartment', price: '$250,000', location: 'Downtown', bedrooms: 3, bathrooms: 2, area: 120, floor: 5, parking: 1, status: 'Reserved' },
+        { id: 2, category: 'Villa', price: '$450,000', location: 'Suburbs', bedrooms: 4, bathrooms: 3, area: 220, floor: 2, parking: 2, status: 'Available' },
+        { id: 3, category: 'Office', price: '$350,000', location: 'Business District', bedrooms: '-', bathrooms: 2, area: 180, floor: 3, parking: 2, status: 'Available' }
+      ];
+
+      // Populate table with sample data (in a real app, this would come from an API)
+      function populateTable() {
+        const tableBody = $('#immeubleTable tbody');
+        tableBody.empty();
+        
+        sampleData.forEach(item => {
+          const statusBadge = item.status === 'Reserved' ? 
+            '<span class="badge badge-reserved">Reserved</span>' : 
+            '<span class="badge badge-available">Available</span>';
+          
+          const row = `
+            <tr>
+              <td>${item.id}</td>
+              <td>${item.category}</td>
+              <td>${item.price}</td>
+              <td>${item.location}</td>
+              <td>${item.bedrooms}</td>
+              <td>${item.bathrooms}</td>
+              <td>${item.area}</td>
+              <td>${item.floor}</td>
+              <td>${item.parking}</td>
+              <td>${statusBadge}</td>
+              <td>
+                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewImmeubleModal">
+                  <i class="ti ti-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editImmeubleModal">
+                  <i class="ti ti-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteImmeubleModal">
+                  <i class="ti ti-trash"></i>
+                </button>
+              </td>
+            </tr>
+          `;
+          tableBody.append(row);
+        });
+      }
+
+      populateTable();
+    });
+  </script>
+</body>
+<!-- [Body] end -->
+</html>

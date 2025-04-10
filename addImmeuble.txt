@@ -66,3 +66,26 @@ class Immeuble {
     }
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+In js :
+// Sample data - in a real app this would come from an API
+let immeubles = [
+  {
+    id: 1,
+    category: 'Apartment',
+    price: '$250,000',
+    location: 'Downtown',
+    bedrooms: 3,
+    bathrooms: 2,
+    area: 120,
+    floor: 5,
+    parking: 1,
+    status: 'reserved',
+    reservedBy: 'John Doe',
+    reservedUntil: '2023-12-31',
+    contact: 'john.doe@example.com | +1234567890'
+  },
+  // ... other immeubles
+];
+
+
